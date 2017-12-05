@@ -32,3 +32,25 @@ class BookModel(Document):
 
     borrowable = BooleanField(required=True, default=True)
     # 대출 가능 여부
+
+
+class BorrowModel(Document):
+    """
+    대출
+    """
+    book = ReferenceField(BookModel, required=True)
+    borrower = ReferenceField(UserModel, required=True)
+    borrow_limit = DateTimeField(required=True, default=datetime.now().date() + timedelta(days=7))
+    # 반납 기한(기본값은 7일 이후)
+
+
+class LightModel(Document):
+    """
+     점등 데이터 관리
+     구현 보류
+    """
+    library = ReferenceField(LibraryModel, required=True)
+    book = ReferenceField(BookModel, required=True)
+    # 점등이 필요한 책
+    light_color = StringField()
+    # None일 수 있음(None은 소등해야 함을 의미)
