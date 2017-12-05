@@ -29,6 +29,8 @@ SWAGGER = {
         'title': SERVICE_NAME + ' API',
         'version': '1.0',
         'description': '''
+JWT Access Token의 유효기간은 {0}일, Refresh Token의 유효기간은 {1}일입니다.
+
 - Status Code 1xx : Informational
 - Status Code 2xx : Success
 - Status Code 3xx : Redirection
@@ -39,7 +41,7 @@ SWAGGER = {
 ##### <a href="http://meetup.toast.com/posts/92">[About REST API]</a>
 ##### <a href="http://jinja.pocoo.org/docs/2.10/">[About Jinja2]</a>
 ##### <a href="https://velopert.com/2389">[About JWT]</a>
-'''
+'''.format(JWT_ACCESS_TOKEN_EXPIRES.days, JWT_REFRESH_TOKEN_EXPIRES.days)
     },
 
     'basePath': '/ '
