@@ -68,3 +68,22 @@ class AuthAdmin(Resource):
             'access_token': create_access_token(id),
             'refresh_token': create_refresh_token(str(refresh_token))
         }, 200
+
+
+class Refresh(Resource):
+    @jwt_refresh_token_required
+    def post(self):
+        """
+        새로운 Access Token 발급
+        """
+        refresh_token = RefreshTokenModel.objects(refresh_token=get_jwt_identity())
+
+        if not refresh_token:
+            return Response('', 403)
+
+        if refresh_token.owner.pw != refresh_token.pw_snapshot:
+            return Response('', 205)
+
+        return {
+            'access_token': create_access_token(refresh_token.owner.id)
+        }, 200
