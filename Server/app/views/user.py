@@ -16,8 +16,8 @@ class Signup(Resource):
         """
         일반 사용자 회원가입
         """
-        id: str = request.form['id']
-        pw: str = request.form['pw']
+        id = request.form['id']
+        pw = request.form['pw']
 
         if UserModel.objects(id=id):
             return Response('', 204)
@@ -33,8 +33,8 @@ class AuthCommonUser(Resource):
         """
         일반 사용자 로그인
         """
-        id: str = request.form['id']
-        pw: str = request.form.get['pw']
+        id = request.form['id']
+        pw = request.form['pw']
 
         user = UserModel.objects(id=id, pw=pw).first()
 
@@ -56,8 +56,8 @@ class AuthAdmin(Resource):
         """
         관리자 로그인
         """
-        id: str = request.form['id']
-        pw: str = request.form.get['pw']
+        id = request.form['id']
+        pw = request.form['pw']
 
         admin = AdminModel.objects(id=id, pw=pw).first()
 
@@ -80,7 +80,7 @@ class Refresh(Resource):
         """
         새로운 Access Token 발급
         """
-        refresh_token = RefreshTokenModel.objects(refresh_token=get_jwt_identity())
+        refresh_token = RefreshTokenModel.objects(refresh_token=get_jwt_identity()).first()
 
         if not refresh_token:
             return Response('', 403)
