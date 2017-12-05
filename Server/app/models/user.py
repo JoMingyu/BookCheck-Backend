@@ -12,25 +12,24 @@ class UserBase(Document):
 
     id = StringField(primary_key=True)
     pw = StringField(required=True)
-    belonging_libraries = ListField(ReferenceField(LibraryModel, required=True))
-    # 사용자가 속한 도서관
 
     meta = {'allow_inheritance': True}
 
 
-# 의도적으로 Collection을 나누기 위한 상속 구조
 class UserModel(UserBase):
     """
     Common User
     """
-    pass
+    belonging_libraries = ListField(ReferenceField(LibraryModel, required=True))
+    # 사용자가 속한 도서관들
 
 
 class AdminModel(UserBase):
     """
     Admin
     """
-    pass
+    managing_library = ReferenceField(LibraryModel, required=True)
+    # 관리하고 있는 도서관
 
 
 class RefreshTokenModel(Document):
