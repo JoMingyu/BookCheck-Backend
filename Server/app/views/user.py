@@ -6,11 +6,12 @@ from flask_jwt_extended import create_access_token, create_refresh_token, jwt_re
 from flask_restful import Resource, request
 from flasgger import swag_from
 
-
+from app.docs.user import *
 from app.models.user import UserModel, AdminModel, RefreshTokenModel
 
 
 class Signup(Resource):
+    @swag_from(SIGNUP_POST)
     def post(self):
         """
         일반 사용자 회원가입
@@ -27,6 +28,7 @@ class Signup(Resource):
 
 
 class AuthCommonUser(Resource):
+    @swag_from(AUTH_COMMON_USER_POST)
     def post(self):
         """
         일반 사용자 로그인
@@ -49,6 +51,7 @@ class AuthCommonUser(Resource):
 
 
 class AuthAdmin(Resource):
+    @swag_from(AUTH_ADMIN_POST)
     def post(self):
         """
         관리자 로그인
@@ -71,6 +74,7 @@ class AuthAdmin(Resource):
 
 
 class Refresh(Resource):
+    @swag_from(REFRESH_POST)
     @jwt_refresh_token_required
     def post(self):
         """
