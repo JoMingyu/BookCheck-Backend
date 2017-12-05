@@ -2,8 +2,6 @@ from datetime import datetime, timedelta
 
 from app.models import *
 
-from app.models.user import UserModel
-
 
 class LibraryModel(Document):
     """
@@ -39,7 +37,8 @@ class BorrowModel(Document):
     대출
     """
     book = ReferenceField(BookModel, required=True)
-    borrower = ReferenceField(UserModel, required=True)
+    borrower = StringField(required=True)
+    # Cross import 방지
     borrow_limit = DateTimeField(required=True, default=datetime.now().date() + timedelta(days=7))
     # 반납 기한(기본값은 7일 이후)
 
