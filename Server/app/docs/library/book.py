@@ -99,6 +99,13 @@ BOOK_GET = {
             'in': 'query',
             'type': 'str',
             'required': True
+        },
+        {
+            'name': 'keyword',
+            'description': '책 검색 키워드',
+            'in': 'query',
+            'type': 'str',
+            'required': False
         }
     ],
     'responses': {

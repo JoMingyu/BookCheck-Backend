@@ -79,7 +79,7 @@ class Book(Resource):
             # 가입되어 있지 않은 도서관
             return Response('', 403)
 
-        keyword = request.form.get('keyword')
+        keyword = request.args.get('keyword')
 
         if not keyword:
             return Response(json.dumps(
