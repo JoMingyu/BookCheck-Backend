@@ -1,7 +1,7 @@
-import os
+﻿import os
 from datetime import timedelta
 
-PORT = 3005
+PORT = 3004
 
 # MAIL_SERVER = 'smtp.naver.com'
 # MAIL_PORT = 587
