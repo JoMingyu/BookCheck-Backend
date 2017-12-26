@@ -59,25 +59,25 @@ class Book(Resource):
         return Response('', 201)
 
     @swag_from(BOOK_GET)
-    @jwt_required
+    # @jwt_required
     def get(self):
         """
         도서관의 책 목록 조회
         """
         library_id = request.args['library_id']
-        user = UserModel.objects(id=get_jwt_identity()).first()
+        # user = UserModel.objects(id=get_jwt_identity()).first()
 
-        if not user:
-            return Response('', 403)
+        # if not user:
+        #     return Response('', 403)
 
         library = LibraryModel.objects(id=library_id).first()
         if not library:
             # 존재하지 않는 Library ID
             return Response('', 204)
 
-        if library not in user.belonging_libraries:
-            # 가입되어 있지 않은 도서관
-            return Response('', 403)
+        # if library not in user.belonging_libraries:
+        #     # 가입되어 있지 않은 도서관
+        #     return Response('', 403)
 
         keyword = request.args.get('keyword')
 
