@@ -24,6 +24,7 @@ class Logger(object):
         @app.before_request
         def before_request():
             current_app.logger.info('Requested from {0} [ {1} {2} ]'.format(request.host, request.method, request.url))
+            current_app.logger.info('Request headers : {0}'.format(request.headers))
             current_app.logger.info('Request values : {0}'.format(request.values))
 
         @app.after_request
