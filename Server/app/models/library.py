@@ -26,6 +26,7 @@ class BookModel(Document):
     publication_date = DateTimeField(required=True)
     summary = StringField(required=True)
     detail = StringField(required=True)
+    image = FileField(required=True)
     # 책에 대한 기본 정보
 
     borrowable = BooleanField(required=True, default=True)

@@ -44,6 +44,7 @@ class Book(Resource):
         publication_date = request.form['publication_date']
         summary = request.form['summary']
         detail = request.form['detail']
+        image = request.files['image']
 
         BookModel(
             rfid=rfid,
@@ -53,7 +54,8 @@ class Book(Resource):
             author=author,
             publication_date=publication_date,
             summary=summary,
-            detail=detail
+            detail=detail,
+            image=image
         ).save()
 
         return Response('', 201)

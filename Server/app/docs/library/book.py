@@ -64,6 +64,13 @@ BOOK_POST = {
             'in': 'formData',
             'type': 'str',
             'required': True
+        },
+        {
+            'name': 'image',
+            'description': '책 이미지',
+            'in': 'formData',
+            'type': 'file',
+            'required': True
         }
     ],
     'responses': {
