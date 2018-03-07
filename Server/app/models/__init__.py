@@ -11,8 +11,5 @@ class Mongo(object):
 
         connect(
             db=settings.get('db'),
-            host=settings.get('host'),
-            port=settings.get('port'),
-            username=settings.get('username'),
-            password=settings.get('password')
+            host=settings.get('host')
         )
