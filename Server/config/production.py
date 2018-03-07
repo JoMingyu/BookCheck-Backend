@@ -10,6 +10,6 @@ SWAGGER.update({'host': ENDPOINT})
 DEBUG = False
 
 MONGODB_SETTINGS = {
-    'db': '{0}-production'.format(SERVICE_NAME),
+    'db': SERVICE_NAME,
     'host': 'localhost',
 }
