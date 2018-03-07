@@ -37,6 +37,7 @@ class AuthCommonUser(Resource):
         pw = request.form['pw']
 
         user = UserModel.objects(id=id, pw=pw).first()
+        print(user)
 
         if not user:
             return Response('', 401)
