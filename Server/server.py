@@ -13,6 +13,6 @@ if __name__ == '__main__':
     new_library = LibraryModel(id='test', title='멋진 도서관').save()
     
     AdminModel.objects(id='test').delete()
-    AdminModel.objects(id='test', pw='test', managing_library=new_library).save()
+    AdminModel(id='test', pw='test', managing_library=new_library).save()
     
     app.run(host=app.config['HOST'], port=app.config['PORT'], debug=app.debug, threaded=True)
