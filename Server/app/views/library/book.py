@@ -66,7 +66,8 @@ class Book(Resource):
         """
         도서관의 책 목록 조회
         """
-        library_id = request.args['library_id']
+        # library_id = request.args['library_id']
+        library_id = 'test'
         # user = UserModel.objects(id=get_jwt_identity()).first()
 
         # if not user:
